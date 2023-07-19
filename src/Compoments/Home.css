@@ -1,0 +1,42 @@
+.homecontainer{
+    background-image: linear-gradient(to  bottom left, rgb(49, 15, 15), rgb(233, 233, 231));
+    height: 595px;
+ 
+}
+.taskcart{
+    background-image:url(/public/images/image5.svg);
+    background-size: cover;
+    opacity: 0.7;
+    width: 450px;
+    height: 450px;
+   margin: 70px;
+}
+/*.taskcart::before{
+    content: "";
+    background-image:url(/public/images/image5.svg);
+    background-size: cover;
+    position: absolute;
+    margin: 50px;
+    width: 450px;
+    height: 450px;
+    
+}*/
+.webname{
+    margin-top: 80px;
+    padding-right: 300px;
+    color: rgb(60, 9, 2);
+    font-size: 150px;
+}
+.shopbtn,.todobtn{
+opacity: 1;
+margin-left: 20px;
+padding: 15px;
+border-radius: 20px;
+background-color:#072b3e ;
+color: white;
+font-weight: 500;
+font-size: 20px;
+}
+#hometodobtn{
+    width: 150px;
+}

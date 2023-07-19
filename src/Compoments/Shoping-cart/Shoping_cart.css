@@ -1,0 +1,12 @@
+.shopmaincontainer{
+    background-image: linear-gradient(white,rgb(134, 134, 205));
+}
+.shopingcontainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px;
+    margin-bottom: 0px;
+    margin-left: 100px;
+    margin-right:100px;
+}
