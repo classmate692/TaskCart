@@ -6,34 +6,40 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import To_do from "./To_do.css";
 import "react-toastify/dist/ReactToastify.css";
+import { nanoid } from "nanoid";
 export const Todo = () => {
   const { list, setList } = useContext(GlobalList);
   const [input, setInput] = useState("");
-  const [completedTasks, setCompletedTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState(0);
   const [task, setTask] = useState(0);
 
-  const Addonlist = () => {
+  const Addonlist = (e) => {
+    const id=nanoid();
     if (input.trim() !== "") {
-      setList([...list, input]);
-      setInput("");
-      setTask(task + 1);
+     setList([...list,{id:id,task:input,iscompleted:false}])
+     setInput("")
+     setTask(task+1);
       toast.success("Your Note is added!");
     } else {
       toast.error("Please fill input field!");
     }
   };
   const completedtask = (index) => {
-    if (completedTasks.includes(index)) {
-      setCompletedTasks((prevCompletedTasks) =>
-        prevCompletedTasks.filter((completedIndex) => completedIndex !== index)
-      );
-    } else {
-      setCompletedTasks((prevCompletedTasks) => [...prevCompletedTasks, index]);
-    }
-    toast.success("Task Completed!");
+   list.map((element,id)=>{
+    if(element.id==index && element.iscompleted==false){
+              element.iscompleted=true;
+              setCompletedTasks(completedTasks+1);
+              toast.success("Task Completed!");
+     }
+     else if(element.id==index && element.iscompleted==true){
+      element.iscompleted=false;
+      setCompletedTasks(completedTasks-1);
+     }
+   })
+    
   };
   const deletelememt = (itemToDelete) => {
-    const updatedItems = list.filter((item, index) => index !== itemToDelete);
+    const updatedItems = list.filter((item, index) => item.id !== itemToDelete);
     setList(updatedItems);
     setTask(task - 1);
     toast.success("Your Note is Deleted!");
@@ -43,7 +49,7 @@ export const Todo = () => {
    
     <div className="todoContainer">
       <div className="totalContainer">
-        <div className="completedTask">completedTask:{completedTasks.length}</div>
+        <div className="completedTask">completedTask:{completedTasks}</div>
         <div className="Task" id="Taskid">
           Task:{task}
         </div>
@@ -75,26 +81,26 @@ export const Todo = () => {
     </div>
   ):(<div>
       <div className="grid-container">
-        {list.map((element, index) => {
+     {list.map((element, index) => {
           return (
-            <div key={index} className="card-container">
-              <h2 className="card">
+            <div key={element.id} className="card-container">
+              <div className="card">
                 {" "}
-                <div className="elment">{element}</div>
+                <div className="elment"><h1>{element.task}</h1></div>
                 <input
                   type="checkbox"
                   id={`vehicle${index}`}
                   name={`vehicle${index}`}
                   value="Bike"
-                  onClick={()=>completedtask(index)}
+                  onClick={()=>completedtask(element.id)}
                 />
                 <MdDelete
                   onClick={() => {
-                    deletelememt(index);
+                    deletelememt(element.id);
                   }}
                   className="deletebtn"
                 />
-              </h2>
+              </div>
             </div>
           );
         })}

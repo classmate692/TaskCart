@@ -14,21 +14,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-         
           <Routes>
             <Route exact path="/" element={<Home />}/>
-
             <Route path="/about" element={<About />} />
-            
             <Route path="/shoping_cart" element={<Context><Shoping_cart /> </Context>} />
             <Route path="/cart" element={<Context><Cart /> </Context>} />
-
-            
             <Route path="/todo" element={<Todo_Context><Todo /> </Todo_Context>} />
-           
             <Route path="*" element={<NoPage />} />
           </Routes>
-        
       </BrowserRouter>
     </div>
   );

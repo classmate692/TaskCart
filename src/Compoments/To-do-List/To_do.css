@@ -21,6 +21,7 @@
 }
 .inputConatiner{
     display: flex;
+    gap:70px;
 }
 .inputfield{
  width: 500px;

@@ -28,7 +28,6 @@ export const Cart = () => {
       </div>
     );
   }
-  console.log(cart);
   return (
     <>
       <div className="shopingcontainer">

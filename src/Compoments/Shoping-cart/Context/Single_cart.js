@@ -16,7 +16,7 @@ export const Single_cart = ({ prod }) => {
     }
     toast.success("add in cart!");
   };
-  console.log(prod);
+
   return (
     <div className="cartcontainer">
       <div className="cartdiv">
